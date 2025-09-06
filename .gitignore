@@ -1,0 +1,131 @@
+# ──────────────
+# General exclusions
+# ──────────────
+*.log
+*.env
+.env.*
+!.env.example
+*.swp
+*.swo
+*.pid
+*.sock
+*.tar
+*.gz
+*.tgz
+*.bak
+*.tmp
+*.sqlite
+*.sqlite3
+.DS_Store
+Thumbs.db
+
+# ──────────────
+# IDE & Editors
+# ──────────────
+.vscode/
+.idea/
+.idea/shelf/
+.fleet/
+.zed/
+.phpactor.json
+.phpunit.cache
+*.sublime-project
+*.sublime-workspace
+/backend/.phpstorm.meta.php/
+
+# ──────────────
+# Frontend (Vue.js + Netlify)
+# ──────────────
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.env
+/frontend/.env.local
+/frontend/.netlify/
+/frontend/.cache/
+/frontend/.vite/
+/frontend/.turbo/
+/frontend/public/build
+/frontend/public/hot
+
+# Netlify build artifacts
+/netlify.toml
+/netlify/functions/
+
+# npm / yarn / pnpm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ──────────────
+# Backend (Laravel + MySQL + PHPUnit)
+# ──────────────
+/backend/vendor/
+/backend/storage/
+/backend/bootstrap/cache/
+/backend/.env
+/backend/.env.backup
+/backend/.env.production
+/backend/.env.testing
+/backend/.phpunit.result.cache
+/backend/.phpunit.cache
+/backend/.DS_Store
+/backend/node_modules/
+/backend/public/storage
+/backend/public/build
+/backend/public/hot
+/backend/storage/*.key
+/backend/storage/pail
+/backend/database/*.sqlite
+/backend/database/*.sqlite3
+/backend/_ide_helper.php
+/backend/_ide_helper_models.php
+/backend/Homestead.json
+/backend/Homestead.yaml
+/backend/auth.json
+/backend/.nova
+
+# Laravel Telescope / Horizon / Debugbar
+/backend/storage/telescope
+/backend/storage/horizon
+/backend/storage/debugbar
+
+# Laravel cache (keep .gitignore inside)
+/backend/storage/framework/cache/*
+!/backend/storage/framework/cache/.gitignore
+/backend/storage/framework/sessions/*
+!/backend/storage/framework/sessions/.gitignore
+/backend/storage/framework/views/*
+!/backend/storage/framework/views/.gitignore
+
+# ──────────────
+# Docker & Kubernetes
+# ──────────────
+docker-compose.override.yml
+**/docker-compose*.yml
+**/.docker/
+/k8s/
+/manifests/
+/devcontainer/
+/docker-data/
+
+# ──────────────
+# CI/CD
+# ──────────────
+/.github/workflows/*.log
+/.render/
+/.render.yaml
+
+# ──────────────
+# Secrets & Keys
+# ──────────────
+*.pem
+*.key
+*.crt
+*.pub
+**/secrets.json
+**/secret.env
+
+
+/storage/*.key
+/public/storage

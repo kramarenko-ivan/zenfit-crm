@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -10,7 +11,7 @@ class AuthApiTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function user_can_register()
     {
         $payload = [
@@ -33,7 +34,7 @@ class AuthApiTest extends TestCase
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function user_can_login()
     {
         $user = User::factory()->create([
@@ -54,7 +55,7 @@ class AuthApiTest extends TestCase
             ]);
     }
 
-    /** @test */
+    #[Test]
     public function user_can_logout()
     {
         $user = User::factory()->create();
@@ -68,7 +69,7 @@ class AuthApiTest extends TestCase
             ->assertJson(['message' => 'Logged out']);
     }
 
-    /** @test */
+    #[Test]
     public function protected_routes_are_inaccessible_without_token()
     {
         $response = $this->getJson('/api/clients');

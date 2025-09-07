@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 use App\Models\Client;
 use App\Models\User;
@@ -19,7 +20,7 @@ class ClientApiTest extends TestCase
         return ['Authorization' => "Bearer $token"];
     }
 
-    /** @test */
+    #[Test]
     public function it_can_list_all_clients()
     {
         Client::factory()->count(3)->create();
@@ -30,7 +31,7 @@ class ClientApiTest extends TestCase
             ->assertJsonCount(3, 'data');
     }
 
-    /** @test */
+    #[Test]
     public function it_can_create_a_client()
     {
         $headers = $this->authenticate();
@@ -48,7 +49,7 @@ class ClientApiTest extends TestCase
             ->assertJsonPath('data.name', 'Test Client');
     }
 
-    /** @test */
+    #[Test]
     public function it_can_show_a_client()
     {
         $client = Client::factory()->create();
@@ -60,7 +61,7 @@ class ClientApiTest extends TestCase
             ->assertJsonPath('data.email', $client->email);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_update_a_client()
     {
         $client = Client::factory()->create(['status' => 'active']);
@@ -71,7 +72,7 @@ class ClientApiTest extends TestCase
             ->assertJsonPath('data.status', 'inactive');
     }
 
-    /** @test */
+    #[Test]
     public function it_can_delete_a_client()
     {
         $client = Client::factory()->create();

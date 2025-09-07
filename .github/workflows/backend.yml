@@ -40,7 +40,7 @@ jobs:
         run: docker compose -f backend/docker-compose.yaml run --rm composer install --no-interaction --optimize-autoloader
 
       - name: Copy .env.example
-        run: docker compose -f backend/docker-compose.yaml run --rm sh -c "[ ! -f .env ] && cp .env.example .env || echo '.env already exists'"
+        run: docker compose -f backend/docker-compose.yaml run --rm artisan sh -c "[ ! -f .env ] && cp .env.example .env || echo '.env already exists'"
 
       - name: Generate app key for Laravel
         run: docker compose -f backend/docker-compose.yaml run --rm artisan key:generate

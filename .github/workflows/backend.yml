@@ -1,0 +1,43 @@
+name: Backend CI
+on:
+  push:
+    branches:
+      - develop/*
+      - main
+  pull_request:
+    branches:
+      - develop/*
+      - main
+
+jobs:
+  phpunit:
+    name: Run PHPUnit tests
+    runs-on: ubuntu-22.04
+    services:
+      mysql:
+        image:
+          mysql:8:0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: test_db
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build PHP container
+        run: docker build -f dockerfiles/php.Dockerfile -t zenfit-php .
+
+      - name: Install Composer dependencies
+        run: docker run --rm -v ${{ github.workspace }}/src:/var/www/laravel zenfit-php sh -c "composer install --no-interaction --optimize-autoloader"
+
+      - name: Run PHPUnit
+        run: docker run --rm -v ${{ github.workspace }}/src:/var/www/laravel zenfit-php sh -c "php artisan test"

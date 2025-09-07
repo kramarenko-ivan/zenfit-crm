@@ -34,7 +34,7 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       - name: Build PHP container
-        run: docker build -f dockerfiles/php.Dockerfile -t zenfit-php .
+        run: docker build -f backend/dockerfiles/php.Dockerfile -t zenfit-php .
 
       - name: Install Composer dependencies
         run: docker run --rm -v ${{ github.workspace }}/src:/var/www/laravel zenfit-php sh -c "composer install --no-interaction --optimize-autoloader"

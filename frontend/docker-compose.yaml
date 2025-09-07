@@ -8,7 +8,7 @@ services:
     ports:
       - "5173:5173"
     volumes:
-      - .src/:/app
+      - ./src/:/app
     environment:
       - CHOKIDAR_USEPOLLING=true
   vite:
@@ -16,4 +16,4 @@ services:
       context: dockerfiles
       dockerfile: vite.Dockerfile
     volumes:
-      - .src/:/app
+      - ./src/:/app

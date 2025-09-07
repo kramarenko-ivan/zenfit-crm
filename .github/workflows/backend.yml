@@ -37,7 +37,7 @@ jobs:
         run: docker build -f backend/dockerfiles/php.Dockerfile -t zenfit-php .
 
       - name: Install Composer dependencies
-        run: docker run --rm -v ${{ github.workspace }}/src:/var/www/laravel zenfit-php sh -c "composer install --no-interaction --optimize-autoloader"
+        run: docker-compose -f backend/docker-compose.yaml run --rm composer install --no-interaction --optimize-autoloader
 
       - name: Run PHPUnit
-        run: docker run --rm -v ${{ github.workspace }}/src:/var/www/laravel zenfit-php sh -c "php artisan test"
+        run: docker-compose -f backend/docker-compose.yaml run --rm artisan test

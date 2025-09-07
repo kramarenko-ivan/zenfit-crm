@@ -5,9 +5,7 @@ create-project:
 	docker-compose run --rm vite
 install:
 	docker-compose run --rm node-runner npm install
-up:
-	docker-compose up dev
-silent:
+dev:
 	docker-compose up -d dev
 stage:
 	docker-compose run --rm node-runner run build

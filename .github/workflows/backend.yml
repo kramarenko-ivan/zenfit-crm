@@ -2,16 +2,12 @@ name: Backend CI
 on:
   push:
     branches:
-      - develop/*
+      - 'develop/backend**'
       - main
-    paths-ignore:
-      - 'frontend/**'
   pull_request:
     branches:
-      - develop/*
+      - 'develop/backend**'
       - main
-    paths-ignore:
-      - 'frontend/**'
 
 jobs:
   phpunit:

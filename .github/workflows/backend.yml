@@ -37,7 +37,7 @@ jobs:
         run: docker build -f backend/dockerfiles/php.Dockerfile -t zenfit-php .
 
       - name: Install Composer dependencies
-        run: docker-compose -f backend/docker-compose.yaml run --rm composer install --no-interaction --optimize-autoloader
+        run: docker compose -f backend/docker-compose.yaml run --rm composer install --no-interaction --optimize-autoloader
 
       - name: Run PHPUnit
-        run: docker-compose -f backend/docker-compose.yaml run --rm artisan test
+        run: docker compose -f backend/docker-compose.yaml run --rm artisan test

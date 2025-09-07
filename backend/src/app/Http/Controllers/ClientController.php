@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use App\Http\Resources\ClientResource;
 
 class ClientController extends Controller
 {
@@ -13,7 +14,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return Client::all();
+        return ClientResource::collection(Client::query()->paginate(15));
     }
 
     /**
@@ -28,7 +29,8 @@ class ClientController extends Controller
             'status' => 'in:active,inactive',
         ]);
 
-        return Client::create($validated);
+        $client = Client::create($validated);
+        return (new ClientResource($client))->response()->setStatusCode(201);
     }
 
     /**
@@ -36,7 +38,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        return $client;
+        return new ClientResource($client);
     }
 
     /**
@@ -53,7 +55,7 @@ class ClientController extends Controller
 
         $client->update($validated);
 
-        return $client;
+        return new ClientResource($client);
     }
 
     /**

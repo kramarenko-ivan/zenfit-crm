@@ -12,8 +12,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
-    // Example of protected API for clients
-    // Route::get('/clients', [ClientController::class, 'index']);
+    Route::apiResource('clients', ClientController::class);
 });
 
-//Route::apiResource('clients', ClientController::class);
+

@@ -4,10 +4,14 @@ on:
     branches:
       - develop/*
       - main
+    paths-ignore:
+      - 'frontend/**'
   pull_request:
     branches:
       - develop/*
       - main
+    paths-ignore:
+      - 'frontend/**'
 
 jobs:
   phpunit:

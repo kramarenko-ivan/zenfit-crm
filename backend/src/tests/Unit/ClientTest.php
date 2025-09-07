@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 use App\Models\Client;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -10,7 +11,7 @@ class ClientTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**@test */
+    #[Test]
     public function it_can_create_a_client()
     {
         $client = Client::factory()->create([
@@ -27,7 +28,7 @@ class ClientTest extends TestCase
         $this->assertEquals('Test Client', $client->name);
     }
 
-    /**@test */
+    #[Test]
     public function it_can_update_a_client()
     {
         $client = Client::factory()->create();
@@ -36,7 +37,7 @@ class ClientTest extends TestCase
         $this->assertEquals('inactive', $client->status);
     }
 
-    /**@test */
+    #[Test]
     public function it_can_delete_a_client()
     {
         $client = Client::factory()->create();

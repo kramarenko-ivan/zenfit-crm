@@ -2,11 +2,11 @@ name: Backend CI
 on:
   push:
     branches:
-      - develop/*
+      - 'develop/backend**'
       - main
   pull_request:
     branches:
-      - develop/*
+      - 'develop/backend**'
       - main
 
 jobs:
